@@ -1,0 +1,23 @@
+.title {
+    color: #067aa8;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    padding-top: 25px;
+}
+
+.footer {
+    background-color: #666666;
+    border-top-style: solid;
+    border-top-width: 5px;
+    border-top-color: #067aa8;
+    color: white;
+    min-height: 55px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-top: 15px;
+}
