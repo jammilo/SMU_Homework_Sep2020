@@ -21,3 +21,9 @@
     width: 100%;
     padding-top: 15px;
 }
+
+.active,
+.panel:hover {
+    border-color: #0BADA6;
+    border-style: solid;
+}
