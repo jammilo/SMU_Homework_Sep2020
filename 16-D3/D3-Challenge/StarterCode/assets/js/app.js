@@ -69,34 +69,31 @@ function makePlot() {
             .call(leftAxis);
 
         // STEP 6: CREATE THE GRAPH
-        // append circles
-        var circlesGroup = chartGroup.selectAll("circle")
+        // Create & Append Initial Circles
+        var circlesGroup = chartGroup.selectAll("stateCircle")
             .data(uscData)
             .enter()
             .append("circle")
             .attr("cx", d => xScale(d.poverty))
             .attr("cy", d => yScale(d.healthcare))
-            .attr("r", "10")
+            .attr("r", "12")
             .attr("stroke-width", "0.3")
             .style("opacity", 0.8)
             .classed("stateCircle", true);
 
-        // STEP 6.5: Be extra. Have the circles fly
-        // chartGroup.selectAll("circle")
-        //     .transition()
-        //     .duration(5000)
-        //     .attr("cx", d => xScale(d.poverty))
-        //     .attr("cy", d => yScale(d.healthcareLow))
-        //     .attr("r", "1")
-        //     .style("opacity", 1)
-        // .delay(function(d, i) { return i * 500 });
 
-
-        // chartGroup.selectAll("circle")
-        //     .transition()
-        //     .duration(5000)
-        //     .style("opacity", 1)
-        //     .delay(function(d, i) { return i * 500 });
+        // append text to circles
+        var textGroup = chartGroup
+            .selectAll("stateText")
+            .data(uscData)
+            .enter()
+            .append("text")
+            .text(d => (d.abbr))
+            .attr("alignment-baseline", "central")
+            .attr("x", d => xScale(d.poverty))
+            .attr("y", d => yScale(d.healthcare))
+            .attr("font-size", 12)
+            .classed("stateText", true);
 
         // STEP 7: Add Axes Labels
         // Create axes labels
@@ -117,7 +114,7 @@ function makePlot() {
         // Step 1: Initialize Tooltip
         var toolTip = d3.tip()
             .attr("class", "d3-tip")
-            .offset([90, 90])
+            .offset([80, 80])
             .html(function(d) {
                 return (`<strong>${d.state}<strong><br><strong>Poverty: ${d.poverty}%</strong><br><strong>Lacks Healthcare: ${d.healthcare}%</strong>`);
             });
@@ -129,22 +126,23 @@ function makePlot() {
         circlesGroup.on("mouseover", function(event, d) {
                 toolTip.show(d, this);
 
-                //make bubbles big
-                d3.select(this)
-                    .transition()
-                    .duration(1000)
-                    .attr("r", 100);
             })
             // Step 4: Create "mouseout" event listener to hide tooltip
             .on("mouseout", function(event, d) {
                 toolTip.hide(d);
 
-                d3.select(this)
-                    .transition()
-                    .duration(1000)
-                    .attr("r", 10);
             });
-
+        // Step 5:Create Text Tooltip in the Chart
+        textGroup.call(toolTip);
+        // Step 6:Create Event Listeners to Display and Hide the Text Tooltip
+        textGroup.on("mouseover", function(event, d) {
+                toolTip.show(d, this);
+            })
+            // onmouseout Event
+            .on("mouseout", function(event, d) {
+                toolTip.hide(d);
+            });
+        return circlesGroup;
 
 
     }).catch(function(error) {

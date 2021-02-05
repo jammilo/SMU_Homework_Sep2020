@@ -28,12 +28,12 @@
 
 .stateText {
     font-family: sans-serif;
-    fill: #fff;
+    fill: rgb(255, 255, 255);
     text-anchor: middle;
 }
 
 .stateCircle {
-    fill: #cc551e;
+    fill: #f85307;
     stroke: #e3e3e3;
 }
 
