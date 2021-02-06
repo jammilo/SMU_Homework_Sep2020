@@ -74,11 +74,11 @@ function makePlot() {
             .data(uscData)
             .enter()
             .append("circle")
-            .attr("cx", d => xScale(d.poverty))
-            .attr("cy", d => yScale(d.healthcare))
-            .attr("r", "12")
+            // .attr("cx", d => xScale(d.poverty))
+            // .attr("cy", d => yScale(d.healthcare))
+            // .attr("r", "12")
             .attr("stroke-width", "0.3")
-            .style("opacity", 0.8)
+            .style("opacity", 0.5)
             .classed("stateCircle", true);
 
 
@@ -90,10 +90,27 @@ function makePlot() {
             .append("text")
             .text(d => (d.abbr))
             .attr("alignment-baseline", "central")
-            .attr("x", d => xScale(d.poverty))
-            .attr("y", d => yScale(d.healthcare))
+            // .attr("x", d => xScale(d.poverty))
+            // .attr("y", d => yScale(d.healthcare))
             .attr("font-size", 12)
             .classed("stateText", true);
+
+        // STEP 6.5:Have the circles fly
+        chartGroup.selectAll("circle")
+            .transition()
+            .duration(5000)
+            .attr("cx", d => xScale(d.poverty))
+            .attr("cy", d => yScale(d.healthcare))
+            .attr("r", "12")
+            .style("opacity", 0.5)
+            .delay(function(d, i) { return i * 100 });
+
+        chartGroup.selectAll(".stateText")
+            .transition()
+            .duration(5000)
+            .attr("x", d => xScale(d.poverty))
+            .attr("y", d => yScale(d.healthcare))
+            .delay(function(d, i) { return i * 100 });
 
         // STEP 7: Add Axes Labels
         // Create axes labels
@@ -126,23 +143,23 @@ function makePlot() {
         circlesGroup.on("mouseover", function(event, d) {
                 toolTip.show(d, this);
 
+                //make bubbles big
+                d3.select(this)
+                    .transition()
+                    .duration(1000)
+                    .attr("r", 50);
+
             })
             // Step 4: Create "mouseout" event listener to hide tooltip
             .on("mouseout", function(event, d) {
                 toolTip.hide(d);
 
+                d3.select(this)
+                    .transition()
+                    .duration(1000)
+                    .attr("r", 12);
+
             });
-        // Step 5:Create Text Tooltip in the Chart
-        textGroup.call(toolTip);
-        // Step 6:Create Event Listeners to Display and Hide the Text Tooltip
-        textGroup.on("mouseover", function(event, d) {
-                toolTip.show(d, this);
-            })
-            // onmouseout Event
-            .on("mouseout", function(event, d) {
-                toolTip.hide(d);
-            });
-        return circlesGroup;
 
 
     }).catch(function(error) {
