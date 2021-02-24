@@ -1,4 +1,7 @@
-// @TODO: YOUR CODE HERE!
+// Initial global Params
+var chosenXAxis = "poverty";
+var chosenYAxis = "healthcare";
+
 $(document).ready(function() {
     makePlot();
 
@@ -45,6 +48,10 @@ function makePlot() {
         uscData.forEach(function(row) {
             row.healthcareLow = +row.healthcareLow;
             row.poverty = +row.poverty;
+            row.age = +row.age;
+            row.obesity = +row.obesity;
+            row.income = +row.income;
+            row.smokes = +row.smokes;
         });
 
         // STEP 4: Create the Scales

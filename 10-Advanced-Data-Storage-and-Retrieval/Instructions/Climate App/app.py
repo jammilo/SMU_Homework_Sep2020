@@ -13,19 +13,7 @@ sqlHelper = SQLHelper()
 @app.route("/")
 def home():
     print("Client requested the home page from the server")
-#     return(f"<br/>--List of all the routes that are available--<br/>"
-#         f"<br/>Returns the dates and rainfall(precipitation):<br/>"
-#         f"/api/v1.0/precipitation<br/>"
-#         f"<br/>Returns a list of stations<br/>"
-#         f"/api/v1.0/stations<br/>"
-#         f"<br/>Returns a list of Temperature for the previous year:<br/>"
-#         f"/api/v1.0/tobs<br/>"
-#         f"<br/>Returns the minimum, average and maximum temperature for a date<br/>"
-#         f"/api/v1.0/start_date<br/>"
-#         f"<br/>Returns the minimum, average and maximum temperature for a start and end date<br/>"
-#         f"/api/v1.0/start_date/end_date<br/>"
-#         f"<br/>-Dates are in YYYY-MM-DD format"
-# )
+
 
     return"""<h1>Welcome to my homework page: Hawaii Climate App (Flask API)</h1>
 <p>Precipitation Analysis:</p>

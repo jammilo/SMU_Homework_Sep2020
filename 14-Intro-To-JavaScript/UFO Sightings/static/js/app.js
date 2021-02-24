@@ -1,8 +1,8 @@
 var table_data = data; // from data.js
 
 $(document).ready(function() {
-    // console.log("page loaded");
-    // console.log(table_data);
+    console.log("page loaded");
+    console.log(table_data);
     buildFilters();
     buildTable();
 
