@@ -17,6 +17,7 @@ function makeMap() {
             $.ajax({
                 type: "GET",
                 url: "/SMU_Homework_Sep2020/17-Mapping-Web/static/data/PB2002_boundaries.json",
+                // url: "static/data/PB2002_boundaries.json",
                 success: function(tectonic) {
                     //BUILD WITH BOTH DATASETS
                     buildMap(data, tectonic);
@@ -169,7 +170,7 @@ function createMarkerOptions(feature) {
     }
 
     var geojsonMarkerOptions = {
-        radius: (feature.properties.mag * 8) + 1,
+        radius: (feature.properties.mag * 4) + 1,
         fillColor: depthColor,
         color: "#E3E3E3",
         weight: 1,
