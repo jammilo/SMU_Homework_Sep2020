@@ -6,7 +6,7 @@ function makeMap() {
     // data
     // Store our API endpoint as queryUrl
 
-    var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
+    var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 
     // Perform a GET request to the query URL
     $.ajax({
@@ -16,7 +16,7 @@ function makeMap() {
             // make second call
             $.ajax({
                 type: "GET",
-                url: "/static/data/PB2002_boundaries.json",
+                url: "/SMU_Homework_Sep2020/17-Mapping-Web/static/data/PB2002_boundaries.json",
                 success: function(tectonic) {
                     //BUILD WITH BOTH DATASETS
                     buildMap(data, tectonic);
