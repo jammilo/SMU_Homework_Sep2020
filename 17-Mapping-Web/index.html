@@ -6,6 +6,8 @@
     <title>Leaflet Live Earthquakes</title>
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lumen/bootstrap.min.css">
     <!-- Our CSS -->
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
     <!-- JQuery -->
@@ -20,9 +22,29 @@
 </head>
 
 <body>
+    <div class="jumbotron text-center">
+        <h4 class="display-4">Global Live Earthquakes by USGS</h4>
+        <hr class="my-2">
+        <div class="card-header" style="font-size:30px"><strong>Filters</strong></div>
+        <div class="card-body">
+            <select id="period">
+                    <option value="all_hour">Past Hour</option>
+                    <option value="all_day">Past Day</option>
+                    <option value="all_week">Past 7 Days</option>
+                    <option value="all_month">Past 30 Days</option>
+                </select>
+        </div>
+        <h4 id="maptext"></h4>
+    </div>
+    <div class="row">
+        <div class="col-md-12" id="mapcontainer">
 
-    <!-- The div that holds our map -->
-    <div id="mapid"></div>
+            <!-- The div that holds our map -->
+            <div id="mapid"></div>
+        </div>
+
+
+    </div>
 
 
 </body>

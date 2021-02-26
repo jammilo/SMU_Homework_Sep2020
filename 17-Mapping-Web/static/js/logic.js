@@ -1,12 +1,20 @@
 $(document).ready(function() {
     makeMap();
+    //event listener
+    $("#period").change(function() {
+        makeMap();
+    });
 });
 
 function makeMap() {
     // data
-    // Store our API endpoint as queryUrl
+    //set title
+    var period_text = $("#period option:selected").text();
+    $("#maptext").text(`All Earthquakes Recorded by the USGS for the ${period_text}`);
 
-    var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
+    // Store our API endpoint as queryUrl
+    var period = $("#period").val();
+    var queryUrl = `https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/${period}.geojson`
 
     // Perform a GET request to the query URL
     $.ajax({
@@ -36,6 +44,9 @@ function makeMap() {
 }
 
 function buildMap(data, tectonic) {
+
+    $("#mapcontainer").empty();
+    $("#mapcontainer").append(`<div id="mapid"></div>`);
 
     // Step 0: Create the Tile Layers
     // Add a tile layer
@@ -69,7 +80,7 @@ function buildMap(data, tectonic) {
     // STEP 1: INIT MAP
     // Create a map object
     var myMap = L.map("mapid", {
-        center: [15.5994, -28.6731],
+        center: [33.0, -96.0],
         zoom: 5,
         layers: [light_mode, dark_mode, satellite_mode]
     });
