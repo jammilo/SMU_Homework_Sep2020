@@ -195,6 +195,8 @@ function createMarkerOptions(feature) {
 function onEachFeature(feature, layer) {
 
     if (feature.properties && feature.properties.place) {
-        layer.bindPopup(feature.properties.place);
+        layer.bindPopup("<h4>Location: " + feature.properties.place + 
+        "</h4><hr><p>Date & Time: " + new Date(feature.properties.time) + 
+        "</p><hr><p>Magnitude: " + feature.properties.mag + "</p>");
     }
 }
