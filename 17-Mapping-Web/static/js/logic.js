@@ -81,7 +81,7 @@ function buildMap(data, tectonic) {
     // Create a map object
     var myMap = L.map("mapid", {
         center: [33.0, -96.0],
-        zoom: 5,
+        zoom: 3,
         layers: [light_mode, dark_mode, satellite_mode]
     });
 
