@@ -2,7 +2,7 @@
 
 ## Background
 
-YUtilize VBA scripting to analyze real stock market data for 3 consecutive years (2014 - 2016).
+Utilize VBA scripting to analyze real stock market data for 3 consecutive years (2014 - 2016).
 
 ### Stock market analyst
 
