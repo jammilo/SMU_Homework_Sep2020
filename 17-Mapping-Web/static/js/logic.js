@@ -24,7 +24,7 @@ function makeMap() {
             // make second call
             $.ajax({
                 type: "GET",
-                url: "/SMU_Homework_Sep2020/17-Mapping-Web/static/data/PB2002_boundaries.json",
+                url: "/Sep2020-April2021/17-Mapping-Web/static/data/PB2002_boundaries.json",
                 // url: "static/data/PB2002_boundaries.json",
                 success: function(tectonic) {
                     //BUILD WITH BOTH DATASETS
